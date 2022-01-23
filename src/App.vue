@@ -1,13 +1,9 @@
 <template>
 	<div>
-		<h1>Работает</h1>
-		<button @click="addLike">like!</button>
-		<button @click="addDislike">Dislike!</button>
-		<div>
-			Кол-во лайков <strong>{{ likes }} </strong>
-		</div>
-		<div>
-			Кол-во дизлайков <strong>{{ dislikes }} </strong>
+		<form></form>
+		<div class="post" v-for="post in posts">
+			<div><strong>Название</strong> {{ post.title }}</div>
+			<div><strong>Описание</strong> {{ post.body }}</div>
 		</div>
 	</div>
 </template>
@@ -16,19 +12,38 @@
 export default {
 	data() {
 		return {
-			likes: 0,
-			dislikes: 0,
+			posts: [
+				{
+					id: 1,
+					title: 'Пост о JS',
+					body: 'JS язык с динамической типизацией',
+				},
+				{
+					id: 1,
+					title: 'Пост о JS',
+					body: 'JS делает сайты интерактивными',
+				},
+				{
+					id: 1,
+					title: 'Пост о JS',
+					body: 'JS был представлен в 1995 году',
+				},
+			],
 		};
-	},
-	methods: {
-		addLike() {
-			this.likes += 1;
-		},
-		addDislike() {
-			this.dislikes += 1;
-		},
 	},
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	margin-top: 15px;
+}
+
+.post {
+	padding: 15px;
+	border: 2px solid green;
+}
+</style>
