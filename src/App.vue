@@ -1,3 +1,34 @@
-<template></template>
+<template>
+	<div>
+		<h1>Работает</h1>
+		<button @click="addLike">like!</button>
+		<button @click="addDislike">Dislike!</button>
+		<div>
+			Кол-во лайков <strong>{{ likes }} </strong>
+		</div>
+		<div>
+			Кол-во дизлайков <strong>{{ dislikes }} </strong>
+		</div>
+	</div>
+</template>
 
-<style></style>
+<script>
+export default {
+	data() {
+		return {
+			likes: 0,
+			dislikes: 0,
+		};
+	},
+	methods: {
+		addLike() {
+			this.likes += 1;
+		},
+		addDislike() {
+			this.dislikes += 1;
+		},
+	},
+};
+</script>
+
+<style lang="scss" scoped></style>
