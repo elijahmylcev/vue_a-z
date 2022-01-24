@@ -4,12 +4,14 @@
 			<h3>Создание поста</h3>
 			<input
 				v-bind:value="title"
+				@input="title = $event.target.value"
 				class="input"
 				type="text"
 				placeholder="Название поста"
 			/>
 			<input
 				v-bind:value="body"
+				@input="body = $event.target.value"
 				class="input"
 				type="text"
 				placeholder="Описание поста"
@@ -28,6 +30,8 @@
 export default {
 	data() {
 		return {
+			title: '',
+			body: '',
 			posts: [
 				{
 					id: 1,
@@ -45,8 +49,6 @@ export default {
 					body: 'JS был представлен в 1995 году',
 				},
 			],
-			title,
-			body,
 		};
 	},
 	methods: {
