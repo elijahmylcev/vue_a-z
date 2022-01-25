@@ -1,5 +1,5 @@
 <template>
-	<button class="btn" @click="createPost">
+	<button class="btn">
 		<slot></slot>
 	</button>
 </template>
@@ -11,7 +11,6 @@ export default {};
 <style scoped>
 .btn {
 	align-self: flex-end;
-	margin-top: 10px;
 	padding: 10px 15px;
 	background: none;
 	color: teal;

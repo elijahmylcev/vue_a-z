@@ -5,7 +5,7 @@
 			<div><strong>Описание</strong> {{ post.body }}</div>
 		</div>
 		<div class="post__btns">
-			<my-button>Delete</my-button>
+			<my-button style="border-color: red; color: red">Delete</my-button>
 		</div>
 	</div>
 </template>
@@ -25,6 +25,7 @@ export default {
 
 <style scoped>
 .post {
+	margin-top: 15px;
 	padding: 15px;
 	border: 2px solid green;
 	display: flex;

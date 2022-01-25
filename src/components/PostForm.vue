@@ -32,14 +32,18 @@ export default {
 	},
 	methods: {
 		createPost() {
-			this.post.id = Date.now();
+			if (this.post.title === '' || this.post.body === '') {
+				return;
+			} else {
+				this.post.id = Date.now();
 
-			this.$emit('create', this.post);
+				this.$emit('create', this.post);
 
-			this.post = {
-				title: '',
-				body: '',
-			};
+				this.post = {
+					title: '',
+					body: '',
+				};
+			}
 		},
 	},
 };
@@ -57,5 +61,9 @@ form {
 	width: 100%;
 	border: 1px solid teal;
 	padding: 10px 15px;
+}
+
+.btn {
+	margin-top: 15px;
 }
 </style>
