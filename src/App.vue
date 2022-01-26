@@ -7,13 +7,16 @@
 		<my-dialog v-model:show="dialogVisible">
 			<post-form @create="createPost" />
 		</my-dialog>
-		<post-list @remove="removePost" :posts="posts" />
+		<post-list @remove="removePost" :posts="posts" v-if="!isPostsLoading" />
+		<div v-else>Идет загрузка...</div>
 	</div>
 </template>
 
 <script>
 import PostForm from '@/components/PostForm';
 import PostList from '@/components/PostList';
+import axios from 'axios';
+
 export default {
 	components: {
 		PostForm,
@@ -21,24 +24,9 @@ export default {
 	},
 	data() {
 		return {
-			posts: [
-				{
-					id: 1,
-					title: 'Пост о JS',
-					body: 'JS язык с динамической типизацией',
-				},
-				{
-					id: 2,
-					title: 'Пост о JS',
-					body: 'JS делает сайты интерактивными',
-				},
-				{
-					id: 3,
-					title: 'Пост о JS',
-					body: 'JS был представлен в 1995 году',
-				},
-			],
+			posts: [],
 			dialogVisible: false,
+			isPostsLoading: false,
 		};
 	},
 	methods: {
@@ -49,6 +37,23 @@ export default {
 		removePost(post) {
 			this.posts = this.posts.filter(p => p.id !== post.id);
 		},
+		async fetchPosts() {
+			try {
+				this.isPostsLoading = true;
+
+				const response = await axios(
+					'https://jsonplaceholder.typicode.com/posts?_limit=10'
+				);
+				this.posts = response.data;
+			} catch (e) {
+				console.log(e);
+			} finally {
+				this.isPostsLoading = false;
+			}
+		},
+	},
+	mounted() {
+		this.fetchPosts();
 	},
 };
 </script>
