@@ -5,7 +5,11 @@
 			<div><strong>Описание</strong> {{ post.body }}</div>
 		</div>
 		<div class="post__btns">
-			<my-button style="border-color: red; color: red">Delete</my-button>
+			<my-button
+				@click="$emit('remove', post)"
+				style="border-color: red; color: red"
+				>Delete</my-button
+			>
 		</div>
 	</div>
 </template>

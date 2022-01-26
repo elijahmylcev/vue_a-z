@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<PostForm @create="createPost" />
-		<PostList :posts="posts" />
+		<PostList @remove="removePost" :posts="posts" />
 	</div>
 </template>
 
@@ -22,12 +22,12 @@ export default {
 					body: 'JS язык с динамической типизацией',
 				},
 				{
-					id: 1,
+					id: 2,
 					title: 'Пост о JS',
 					body: 'JS делает сайты интерактивными',
 				},
 				{
-					id: 1,
+					id: 3,
 					title: 'Пост о JS',
 					body: 'JS был представлен в 1995 году',
 				},
@@ -37,6 +37,9 @@ export default {
 	methods: {
 		createPost(post) {
 			this.posts.push(post);
+		},
+		removePost(post) {
+			this.posts = this.posts.filter(p => p.id !== post.id);
 		},
 	},
 };
