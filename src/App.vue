@@ -1,9 +1,13 @@
 <template>
 	<div class="app">
-		<h2>Страноца с постами</h2>
-		<my-button @click="this.dialogVisible = true" class="createPost"
-			>Создать пост</my-button
-		>
+		<h1>Страноца с постами</h1>
+		<div class="app__btns">
+			<my-button @click="this.dialogVisible = true" class="createPost"
+				>Создать пост</my-button
+			>
+
+			<my-select v-model="selectedSort" :options="sortOptions"></my-select>
+		</div>
 		<my-dialog v-model:show="dialogVisible">
 			<post-form @create="createPost" />
 		</my-dialog>
@@ -11,6 +15,8 @@
 		<div v-else>Идет загрузка...</div>
 	</div>
 </template>
+
+1.25
 
 <script>
 import PostForm from '@/components/PostForm';
@@ -27,6 +33,11 @@ export default {
 			posts: [],
 			dialogVisible: false,
 			isPostsLoading: false,
+			selectedSort: '',
+			sortOptions: [
+				{ value: 'title', name: 'По названию' },
+				{ value: 'body', name: 'По содержанию' },
+			],
 		};
 	},
 	methods: {
@@ -68,7 +79,10 @@ export default {
 .app {
 	padding: 15px;
 }
-.createPost {
-	margin: 15px 0 15px 0;
+
+.app__btns {
+	display: flex;
+	justify-content: space-between;
+	margin: 15px 0;
 }
 </style>
