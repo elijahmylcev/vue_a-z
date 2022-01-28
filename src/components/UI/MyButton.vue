@@ -12,6 +12,7 @@ export default {
 
 <style scoped>
 .btn {
+	cursor: pointer;
 	align-self: flex-end;
 	padding: 10px 15px;
 	background: none;
