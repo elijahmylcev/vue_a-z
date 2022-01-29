@@ -15,4 +15,4 @@ directives.forEach(directive => {
 	app.directive(directive.name, directive);
 });
 
-app.use(router).mount('#app');
+app.use(router).use(store).mount('#app');
