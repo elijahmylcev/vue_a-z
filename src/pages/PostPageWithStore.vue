@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<!-- <h1>
+		<h1>
 			{{
 				$store.state.isAuth
 					? 'Пользователь авторизован'
 					: 'Авторизуйтесь, чтобы использовать сервис'
 			}}
 		</h1>
-		<h1>{{ $store.getters.doubleLikes }}</h1>
+		<!-- <h1>{{ $store.getters.doubleLikes }}</h1>
 		<div>
 			<my-button @click="$store.commit('incrementLikes')">Лайк</my-button>
 			<my-button @click="$store.commit('decrementLikes')">Дизлайк</my-button>

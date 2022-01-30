@@ -21,6 +21,9 @@ export default createStore({
 	// },
 
 	// actions: {},
+	state: {
+		isAuth: false,
+	},
 	modules: {
 		post: postModule,
 	},

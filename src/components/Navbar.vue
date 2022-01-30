@@ -2,6 +2,9 @@
 	<div class="navbar">
 		<div @click="$router.push('/')" class="logo">Vue3</div>
 		<div class="navbar__btns">
+			<my-button @click="$router.push('/compositionApi')" class="btns"
+				>compositionApi</my-button
+			>
 			<my-button @click="$router.push('/store')" class="btn">Store</my-button>
 			<my-button @click="$router.push('/pages')" class="btn">Посты</my-button>
 			<my-button @click="$router.push('/about')" class="btns">О нас</my-button>
